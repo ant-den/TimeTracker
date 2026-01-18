@@ -1,0 +1,39 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Time Tracker</title>
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+</head>
+<body>
+  <form method="post" action="/auth/logout">
+    <button>Logout</button>
+  </form>
+
+  <h1>Сегодня</h1>
+
+  <div th:if="${running}">
+    <form method="post" action="/session/stop">
+      <input name="note" placeholder="что делал? (необязательно)"/>
+      <button type="submit">STOP</button>
+    </form>
+  </div>
+
+  <div th:unless="${running}">
+    <form method="post" action="/session/start">
+      <button type="submit">START</button>
+    </form>
+  </div>
+
+  <h2>Последние сессии</h2>
+  <ul>
+    <li th:each="s : ${sessions}">
+      <span th:text="${s.startTime}"></span>
+      —
+      <span th:text="${s.endTime}"></span>
+      <span th:if="${s.note != null}"> • </span>
+      <span th:text="${s.note}"></span>
+    </li>
+  </ul>
+</body>
+</html>

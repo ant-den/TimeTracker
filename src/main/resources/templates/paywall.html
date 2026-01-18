@@ -1,0 +1,17 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Unlock</title>
+</head>
+<body>
+  <h1>Разблокировать безлимит</h1>
+  <p>Ты использовал лимит бесплатных сессий. Разблокируй навсегда за $15.</p>
+
+  <form method="post" action="/billing/checkout">
+    <button type="submit">Buy for $15</button>
+  </form>
+
+  <p><a href="/">Назад</a></p>
+</body>
+</html>

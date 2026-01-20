@@ -40,6 +40,5 @@ public class User {
         this.email = email.toLowerCase().trim();
         this.paid = false;
         this.createdAt = Instant.now();
-
     }
 }

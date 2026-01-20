@@ -10,17 +10,17 @@ create table users (
 create table work_sessions (
   id uuid primary key,
   user_id uuid not null references users(id) on delete cascade,
-  start_time timestamptz not null,
-  end_time timestamptz,
+  started_at timestamptz not null,
+  ended_at timestamptz,
   note text,
   created_at timestamptz not null default now()
 );
-create index idx_work_sessions_user_time on work_sessions(user_id, start_time desc);
+create index idx_work_sessions_user_time on work_sessions(user_id, started_at desc);
 
 create table login_tokens (
   token varchar(64) primary key,
   user_id uuid not null references users(id) on delete cascade,
-  expires_at timestamptz not null,
+  expired_at timestamptz not null,
   used_at timestamptz,
   created_at timestamptz not null default now()
 );

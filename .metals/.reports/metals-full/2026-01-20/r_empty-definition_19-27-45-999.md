@@ -1,3 +1,14 @@
+error id: file:///C:/Users/user/Desktop/12x12/timeTracker/src/main/java/com/timeTracker/session/SessionService.java:_empty_/WorkSessionRepository#findFirstByUserIdAndEndedAtIsNullOrderByStartedAtDesc#
+file:///C:/Users/user/Desktop/12x12/timeTracker/src/main/java/com/timeTracker/session/SessionService.java
+empty definition using pc, found symbol in pc: _empty_/WorkSessionRepository#findFirstByUserIdAndEndedAtIsNullOrderByStartedAtDesc#
+empty definition using semanticdb
+empty definition using fallback
+non-local guesses:
+
+offset: 964
+uri: file:///C:/Users/user/Desktop/12x12/timeTracker/src/main/java/com/timeTracker/session/SessionService.java
+text:
+```scala
 package com.timeTracker.session;
 
 
@@ -35,7 +46,7 @@ public class SessionService {
     }
 
     // не создаём вторую активную
-    repo.findFirstByUserIdAndEndedAtIsNullOrderByStartedAtDesc(userId)
+    repo.findFirstByUse@@rIdAndEndedAtIsNullOrderByStartedAtDesc(userId)
         .ifPresent(ws -> { throw new IllegalStateException("Already running"); });
 
     repo.save(new WorkSession(UUID.randomUUID(), user, Instant.now()));
@@ -51,6 +62,13 @@ public class SessionService {
   }
 
   public boolean isRunning(UUID userId) {
-    return repo.findFirstByUserIdAndEndedAtIsNullOrderByStartedAtDesc(userId).isPresent();
+    return repo.findFirstByUserIdAndEndedAtIsNullOrderByStartTimeDesc(userId).isPresent();
   }
 }
+
+```
+
+
+#### Short summary: 
+
+empty definition using pc, found symbol in pc: _empty_/WorkSessionRepository#findFirstByUserIdAndEndedAtIsNullOrderByStartedAtDesc#

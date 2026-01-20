@@ -36,7 +36,7 @@ public class MagicLinkService {
     }
 
     String token = randomToken64();
-    LoginToken lt = new LoginToken(token, user.getId(), Instant.now().plus(15, ChronoUnit.MINUTES));
+    LoginToken lt = new LoginToken(token, user, Instant.now().plus(15, ChronoUnit.MINUTES));
     tokenRepo.save(lt);
 
     return baseUrl + "/auth/callback?token=" + token;

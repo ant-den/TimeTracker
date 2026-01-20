@@ -1,3 +1,14 @@
+error id: file:///C:/Users/user/Desktop/12x12/timeTracker/src/main/java/com/timeTracker/session/SessionService.java:_empty_/UserRepository#findById#orElseThrow#isPaid#
+file:///C:/Users/user/Desktop/12x12/timeTracker/src/main/java/com/timeTracker/session/SessionService.java
+empty definition using pc, found symbol in pc: _empty_/UserRepository#findById#orElseThrow#isPaid#
+empty definition using semanticdb
+empty definition using fallback
+non-local guesses:
+
+offset: 769
+uri: file:///C:/Users/user/Desktop/12x12/timeTracker/src/main/java/com/timeTracker/session/SessionService.java
+text:
+```scala
 package com.timeTracker.session;
 
 
@@ -27,7 +38,7 @@ public class SessionService {
 
   public void start(UUID userId) {
     var user = userRepo.findById(userId).orElseThrow();
-    if (!user.isPaid()) {
+    if (!user.isPaid@@()) {
       long count = repo.countByUserId(userId);
       if (count >= freeLimit) {
         throw new PaywallException();
@@ -54,3 +65,10 @@ public class SessionService {
     return repo.findFirstByUserIdAndEndedAtIsNullOrderByStartedAtDesc(userId).isPresent();
   }
 }
+
+```
+
+
+#### Short summary: 
+
+empty definition using pc, found symbol in pc: _empty_/UserRepository#findById#orElseThrow#isPaid#

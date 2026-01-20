@@ -15,24 +15,24 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/auth")
 public class AuthCallbackController {
-    private final LoginTokenRepository tokenRepo;
+    private final LoginTokenRepository loginToken;
 
-  public AuthCallbackController(LoginTokenRepository tokenRepo) {
-    this.tokenRepo = tokenRepo;
+  public AuthCallbackController(LoginTokenRepository loginTokenRepo) {
+    this.loginToken = loginTokenRepo;
   }
 
   @GetMapping("/callback")
   public String callback(@RequestParam String token, HttpSession session) {
-    var lt = tokenRepo.findById(token).orElse(null);
+    var lt = loginToken.findById(token).orElse(null);
     if (lt == null) return "redirect:/login?e=invalid";
 
     if (lt.getUsedAt() != null) return "redirect:/login?e=used";
     if (lt.getExpiredAt().isBefore(Instant.now())) return "redirect:/login?e=expired";
 
     lt.setUsedAt(Instant.now());
-    tokenRepo.save(lt);
+    loginToken.save(lt);
 
-    session.setAttribute("userId", lt.getUserId().toString());
+    session.setAttribute("userId", lt.getUser().getId().toString());
     return "redirect:/";
   }
 

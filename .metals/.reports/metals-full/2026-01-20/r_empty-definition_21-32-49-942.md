@@ -1,3 +1,14 @@
+error id: file:///C:/Users/user/Desktop/12x12/timeTracker/src/main/java/com/timeTracker/auth/AuthController.java:_empty_/MagicLinkService#createMagicLink#
+file:///C:/Users/user/Desktop/12x12/timeTracker/src/main/java/com/timeTracker/auth/AuthController.java
+empty definition using pc, found symbol in pc: _empty_/MagicLinkService#createMagicLink#
+empty definition using semanticdb
+empty definition using fallback
+non-local guesses:
+
+offset: 771
+uri: file:///C:/Users/user/Desktop/12x12/timeTracker/src/main/java/com/timeTracker/auth/AuthController.java
+text:
+```scala
 package com.timeTracker.auth;
 
 import org.springframework.stereotype.Controller;
@@ -21,8 +32,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public String sendLink(@RequestParam String email, Model model) {
-        System.out.println("login");
-        String link = magicLinkService.createMagicLink(email);
+        String link = magicLinkService.createMa@@gicLink(email);
         // TODO: отправить email через Resend/SendGrid. Пока:
         System.out.println("MAGIC LINK: " + link);
 
@@ -30,3 +40,10 @@ public class AuthController {
         return "login";
     }
 }
+
+```
+
+
+#### Short summary: 
+
+empty definition using pc, found symbol in pc: _empty_/MagicLinkService#createMagicLink#

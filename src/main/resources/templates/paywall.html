@@ -9,6 +9,7 @@
   <p>Ты использовал лимит бесплатных сессий. Разблокируй навсегда за $15.</p>
 
   <form method="post" action="/billing/checkout">
+    <div th:replace="fragments/csrf :: csrf"></div>
     <button type="submit">Buy for $15</button>
   </form>
 

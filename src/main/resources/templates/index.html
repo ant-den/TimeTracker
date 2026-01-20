@@ -7,6 +7,7 @@
 </head>
 <body>
   <form method="post" action="/auth/logout">
+    <div th:replace="fragments/csrf :: csrf"></div>
     <button>Logout</button>
   </form>
 
@@ -14,6 +15,7 @@
 
   <div th:if="${running}">
     <form method="post" action="/session/stop">
+      <div th:replace="fragments/csrf :: csrf"></div>
       <input name="note" placeholder="что делал? (необязательно)"/>
       <button type="submit">STOP</button>
     </form>
@@ -21,6 +23,7 @@
 
   <div th:unless="${running}">
     <form method="post" action="/session/start">
+      <div th:replace="fragments/csrf :: csrf"></div>
       <button type="submit">START</button>
     </form>
   </div>
@@ -28,9 +31,9 @@
   <h2>Последние сессии</h2>
   <ul>
     <li th:each="s : ${sessions}">
-      <span th:text="${s.startTime}"></span>
+      <span th:text="${s.startedAt}"></span>
       —
-      <span th:text="${s.endTime}"></span>
+      <span th:text="${s.endedAt}"></span>
       <span th:if="${s.note != null}"> • </span>
       <span th:text="${s.note}"></span>
     </li>

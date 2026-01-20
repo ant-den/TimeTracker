@@ -1,3 +1,14 @@
+error id: file:///C:/Users/user/Desktop/12x12/timeTracker/src/main/java/com/timeTracker/session/SessionController.java:_empty_/SessionService#isRunning#
+file:///C:/Users/user/Desktop/12x12/timeTracker/src/main/java/com/timeTracker/session/SessionController.java
+empty definition using pc, found symbol in pc: _empty_/SessionService#isRunning#
+empty definition using semanticdb
+empty definition using fallback
+non-local guesses:
+
+offset: 973
+uri: file:///C:/Users/user/Desktop/12x12/timeTracker/src/main/java/com/timeTracker/session/SessionController.java
+text:
+```scala
 package com.timeTracker.session;
 
 
@@ -25,10 +36,10 @@ public class SessionController {
   public String index(HttpSession session, Model model) {
     var userId = currentUser.getUserId(session).orElse(null);
     if (userId == null){
-      System.out.println("redirect rabotajet");
+      ystem.out.println("redirect rabotajet");
      return "redirect:/login";
     }
-    model.addAttribute("running", service.isRunning(userId));
+    model.addAttribute("running", service.isRunnin@@g(userId));
     model.addAttribute("sessions", repo.findTop50ByUserIdOrderByStartedAtDesc(userId));
     return "index";
   }
@@ -56,3 +67,10 @@ public class SessionController {
     return "paywall";
   }
 }
+
+```
+
+
+#### Short summary: 
+
+empty definition using pc, found symbol in pc: _empty_/SessionService#isRunning#

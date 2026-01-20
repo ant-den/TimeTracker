@@ -16,7 +16,8 @@ public class SecurityConfig {
         .requestMatchers("/login", "/auth/**", "/css/**", "/js/**").permitAll()
         .requestMatchers("/api/billing/webhook").permitAll()
         .anyRequest().permitAll() // MVP: реальную защиту сделаем через проверку session userId
-      );
+      )
+      .formLogin(form -> form.disable());
 
     return http.build();
   }

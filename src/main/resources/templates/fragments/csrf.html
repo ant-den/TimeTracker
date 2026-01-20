@@ -1,0 +1,6 @@
+<!— fragments/csrf.html —>
+<div th:fragment="csrf">
+    <input type="hidden"
+           th:name="${_csrf.parameterName}"
+           th:value="${_csrf.token}">
+</div>

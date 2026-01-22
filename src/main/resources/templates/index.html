@@ -1,22 +1,19 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="utf-8"/>
-  <title>Time Tracker</title>
-  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
-</head>
 <body>
+  <div th:replace ="~{layout :: layout (title='Today',content=~{::content})}">
+  <div th:fragment="content">
   <form method="post" action="/auth/logout">
     <div th:replace="fragments/csrf :: csrf"></div>
     <button>Logout</button>
   </form>
 
-  <h1>Сегодня</h1>
+  <h1>Today</h1>
 
   <div th:if="${running}">
     <form method="post" action="/session/stop">
       <div th:replace="fragments/csrf :: csrf"></div>
-      <input name="note" placeholder="что делал? (необязательно)"/>
+      <input name="note" placeholder="What did you do? (not nessesary)"/>
       <button type="submit">STOP</button>
     </form>
   </div>
@@ -28,7 +25,7 @@
     </form>
   </div>
 
-  <h2>Последние сессии</h2>
+  <h2>Previous sessions </h2>
   <ul>
     <li th:each="s : ${sessions}">
       <span th:text="${s.startedAt}"></span>
@@ -38,5 +35,7 @@
       <span th:text="${s.note}"></span>
     </li>
   </ul>
+  </div>
+  </div>
 </body>
 </html>

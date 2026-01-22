@@ -23,9 +23,8 @@ public class AuthController {
     public String sendLink(@RequestParam String email, Model model) {
         System.out.println("login");
         String link = magicLinkService.createMagicLink(email);
-        // TODO: отправить email через Resend/SendGrid. Пока:
         System.out.println("MAGIC LINK: " + link);
-
+        model.addAttribute("link", link);
         model.addAttribute("sent", true);
         return "login";
     }

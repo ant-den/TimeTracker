@@ -1,18 +1,27 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="utf-8"/>
-  <title>Login</title>
-</head>
-<body>
-  <h1>Вход</h1>
-  <form method="post" action="/login">
-    <div th:replace="fragments/csrf :: csrf"></div>
-    <input name="email" type="email" placeholder="you@email.com" required/>
-    <button type="submit">Send magic link</button>
-  </form>
+  <body>
+    <div th:replace ="~{layout :: layout (title='Login',content=~{::content})}">
+    <div th:fragment="content">
+      <h1>Login</h1>
 
-  <p th:if="${sent}">Ссылка отправлена. (В MVP она в логах сервера.)</p>
-</body>
+      <form method="post" action="/login">
+        <div th:replace="fragments/csrf :: csrf"></div>
+        <input
+        name = "email"
+        type = "email"
+        placeholder = "email@email.com"
+        required
+        />
+
+        <button type = "submit">Send magic link</button>
+        </form>
+
+        <div th:if="${sent}">
+          <p>Magic link sent to you!</p>
+          <p th:if="${link}">Preview link: <a th:href="${link}" th:text="${link}"></a></p>
+        </div>
+    </div>
+    </div>
+  </body>
 </html>
- 
